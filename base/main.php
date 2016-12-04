@@ -56,6 +56,8 @@ if(!function_exists('get_server_info')){
 		$server_info['uname'] = php_uname();
 		$server_software = (getenv('SERVER_SOFTWARE')!='')? getenv('SERVER_SOFTWARE')." <span class='strong'>|</span> ":'';
 		$server_info['software'] = $server_software."  PHP ".phpversion();		
+                $server_motd = file_get_contents('/etc/motd');
+                $server_info['motd'] = nl2br($server_motd);
 		return $server_info;
 	}
 }
